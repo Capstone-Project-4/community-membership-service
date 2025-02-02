@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class CommunityMembershipPojo {
+public class CommunityMembershipWithUserDetailsPojo {
     private int communityMembershipId;
-    private int communityId;
-    private String email;
+    private CommunityPojo community;
+    private UserOutputDataPojo user;
     private double amount;
     private boolean isAccepted;
-    private int remainingTermPeriod;
     private boolean isLoanTaken;
     private boolean isLoanDefaulter;
 }

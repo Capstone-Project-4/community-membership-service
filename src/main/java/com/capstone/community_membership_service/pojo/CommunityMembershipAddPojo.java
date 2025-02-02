@@ -7,13 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CommunityMembershipPojo {
-    private int communityMembershipId;
+public class CommunityMembershipAddPojo {
+
     private int communityId;
     private String email;
-    private double amount;
-    private boolean isAccepted;
-    private int remainingTermPeriod;
-    private boolean isLoanTaken;
-    private boolean isLoanDefaulter;
+
 }

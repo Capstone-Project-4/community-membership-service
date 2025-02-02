@@ -1,23 +1,22 @@
 package com.capstone.community_membership_service.repository;
 
 import com.capstone.community_membership_service.entity.CommunityMembershipEntity;
+
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @EnableDiscoveryClient
 @Repository
-public interface CommunityMembershipRepository extends JpaRepository<CommunityMembershipEntity,Integer> {
-    List<CommunityMembershipEntity> findByCommunityId(int communityId);
+public interface CommunityMembershipRepository extends JpaRepository<CommunityMembershipEntity, Integer> {
+    List<CommunityMembershipEntity> findByCommunityIdAndIsAccepted(int communityId, Boolean isAccepted);
 
-    List<CommunityMembershipEntity> findByUsername(String username);
+    List<CommunityMembershipEntity> findByEmail(String email);
+
+    List<CommunityMembershipEntity> findByCommunityIdAndEmail(int communityId, String email);
 
     List<CommunityMembershipEntity> findByCommunityIdAndIsLoanDefaulter(int communityId, Boolean isLoanDefaulter);
 
-    @Query("SELECT SUM(c.amount) FROM CommunityMembershipEntity c WHERE c.communityId = :communityId")
-    Optional<Double> getTotalAmountByCommunityId(@Param("communityId") int communityId);
 }
